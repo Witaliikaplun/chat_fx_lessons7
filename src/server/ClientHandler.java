@@ -68,7 +68,7 @@ public class ClientHandler {
                             try {
                                 server.sendPrivateMsg(str.substring(9), number-1);
                             } catch (ArrayIndexOutOfBoundsException ex){
-                                out.writeUTF("Не допустимый номер пользователя!");
+                                out.writeUTF("Не допустимый номер пользователя !");
                             }
 
                         } else
