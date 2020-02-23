@@ -60,15 +60,15 @@ public class ClientHandler {
                             try {
                                 number = Integer.parseInt(str2);
                             } catch (NumberFormatException e) {
-                                System.out.println("Не верный формат сообщения!");
-                                out.writeUTF("Не верный формат сообщения!");
+                                System.out.println("Не верный формат сообщения !");
+                                out.writeUTF("Не верный формат сообщения !");
                             }
 
                             System.out.println("numer: " + number);
                             try {
                                 server.sendPrivateMsg(str.substring(9), number-1);
                             } catch (ArrayIndexOutOfBoundsException ex){
-                                out.writeUTF("Не допустимый номер пользователя !");
+                                out.writeUTF("Не допустимый номер пользователя!");
                             }
 
                         } else
