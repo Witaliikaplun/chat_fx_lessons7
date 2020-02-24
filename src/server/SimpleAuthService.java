@@ -35,4 +35,13 @@ public class SimpleAuthService implements AuthService {
         }
         return null;
     }
+    public  int getIndex(String nickName){
+        int i = 0;
+        for (UserData u: users) {
+            if(u.nickname.equals(nickName))
+                return  i;
+            i++;
+        }
+        return -1;
+    }
 }

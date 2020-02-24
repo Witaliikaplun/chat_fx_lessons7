@@ -54,22 +54,37 @@ public class ClientHandler {
                         //индивидуальные сообщения--------------------------------------
                         if (str.startsWith("/w")) {
                             String[] str1 = str.split(" ", 3);
-
-                            String str2 = str1[1].substring(4);
-                            int number = 0;
                             try {
-                                number = Integer.parseInt(str2);
+                                System.out.println(server.getAuthService().getIndex(str1[1]));
+                                if (server.getAuthService().getIndex(str1[1]) != -1) {
+
+                                    server.sendPrivateMsg(str1[2], server.getAuthService().getIndex(str1[1]));
+                                } else out.writeUTF("Пользователь не найден");
+
                             } catch (NumberFormatException e) {
                                 System.out.println("Не верный формат сообщения !");
                                 out.writeUTF("Не верный формат сообщения !");
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                out.writeUTF("Пользователь не найден!");
                             }
 
-                            System.out.println("numer: " + number);
-                            try {
-                                server.sendPrivateMsg(str.substring(9), number-1);
-                            } catch (ArrayIndexOutOfBoundsException ex){
-                                out.writeUTF("Не допустимый номер пользователя!");
-                            }
+//--------------------не лучший вариант поиска пользователя по индексу---------------------------
+//                            String str2 = str1[1].substring(4);
+//                            int number = 0;
+//                            try {
+//                                number = Integer.parseInt(str2);
+//                            } catch (NumberFormatException e) {
+//                                System.out.println("Не верный формат сообщения !");
+//                                out.writeUTF("Не верный формат сообщения !");
+//                            }
+//
+//                            System.out.println("numer: " + number);
+//                            try {
+//                                server.sendPrivateMsg(str.substring(9), number-1);
+//                            } catch (ArrayIndexOutOfBoundsException ex){
+//                                out.writeUTF("Не допустимый номер пользователя!");
+//                            }
+//-----------------------------------------------------------------------------------------------
 
                         } else
                             server.broadcastMsg(str);

@@ -54,6 +54,7 @@ public class Server {
         clients.get(num).sendMsg(msg);
     }
 
+
     public void subscribe(ClientHandler clientHandler){
         clients.add(clientHandler);
     }
